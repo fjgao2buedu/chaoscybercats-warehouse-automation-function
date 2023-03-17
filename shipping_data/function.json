@@ -1,0 +1,28 @@
+﻿{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "shippingData",
+      "databaseName": "Shipping",
+      "collectionName": "Received",
+      "connectionStringSetting": "AZURE_COSMOS_CONNECTIONSTRING",
+      "sqlQuery": "SELECT c.id as id,c.Date as date,c.ShipmentID as shipmentid,c.ShipperID as shipperid,c.WarehouseID as warehouseid,c.BoxesRcvd as boxesrcvd,c.ShippingPO as shippingpo FROM c WHERE c.ShipperID = {shipperid}",
+      "direction": "in",
+      "type": "cosmosDB"
+    }
+  ]
+}
